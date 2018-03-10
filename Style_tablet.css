@@ -1,0 +1,87 @@
+body {
+/* background-color: rgb(230,255,255); */
+ background-color: #eef8ff;
+}
+
+/* .homepage {
+ margin: 1in;
+ border: solid 3px white;
+ padding: 0.5in;
+ background-color: rgba(230,255,255,0.88);
+}
+
+.research {
+ margin: 1in;
+ border: solid 3px white;
+ padding: 0.5in;
+ background-color: rgba(230,255,255,0.88);
+}
+
+.teaching {
+ margin: 1in;
+ border: solid 3px white;
+ padding: 0.5in;
+ background-color: rgba(230,255,255,0.88);
+} */
+
+.other {
+ margin: 1in;
+ border: solid 3px white;
+ padding: 0.5in;
+ background-color: rgba(230,255,255,0.88);
+}
+
+img {
+ border-radius: 3%;
+/* border: 3px solid rgb(0,39,76); */
+ border: 3px solid black;
+ margin-top: 0.25cm;
+ margin-left: 0.6cm;
+ margin-right: 0.4cm;
+ margin-bottom: 0.25cm;
+ float: right;
+}
+
+
+h1 {
+ font-family: "Bungee Shade", cursive;
+ text-align: left;
+}
+
+/* .Links {
+ display: inline;
+ margin: 1cm;
+} */
+
+.Links a {
+ text-transform: uppercase;
+}
+
+.homelink {
+ text-transform: uppercase;
+}
+
+.Northwestern {
+ color: rgb(78,42,132);
+ font-variant: small-caps;
+ font-size: 26px;
+}
+
+.Michigan {
+ color: rgb(0,39,76);
+ font-variant: small-caps;
+ font-size: 26px;
+}
+
+.otherwork {
+ font-size: 18px;
+ font-weight: bold;
+}
+
+a:visited {
+ color: blue;
+}
+
+a:hover {
+ color: green;
+}
