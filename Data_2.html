@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+    <!--    <link href= "Style.css" type="text/css" rel="stylesheet" /> -->
+    
+    <link href= "https://fonts.googleapis.com/css?family=Bungee+Shade" type="text/css" rel="stylesheet" />
+    
+    <title> Apps by Rohan Kadakia </title>
+    
+    <link rel="icon" href="RK_icon.png">
+        
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+            
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+            
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="Style_mobile.css">
+            
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 801px)" href="Style.css">
+            
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 501px) and (max-width: 800px)" href="Style_tablet.css">
+</head>
+            
+<body>
+            
+<div class="teaching">
+    <h1> Data-Driven Apps </h1>
+
+    <ul>
+        <li> \(\pm\)Epsilon (<a href="" id="pmephover">description</a>, <a href="https://rohan-epsilon.herokuapp.com" target = "_blank">rohan-epsilon.herokuapp.com</a>)
+            
+        <p id="pmepabstract"><b>Description:</b> Search the arXiv for similar math papers!
+           <!-- (<a href="" id="pmephide">hide</a>) -->
+        </p>
+        <script>
+            $("#pmepshow").click(function(event) {
+                                   event.preventDefault();
+                                   $("#pmepabstract").show("slow");
+                                   });
+        </script>
+        <script>
+            $("#pmephide").click(function(event) {
+                                   event.preventDefault();
+                                   $("#pmepabstract").hide("slow");
+                                   });
+        </script>
+        <script>
+            $("#pmephover").hover(function(event) {
+                                   event.preventDefault();
+                                   alert("#pmepabstract");
+                                   });
+        </script>
+    </ul>
+    
+
+
+    
+    <ul>
+        <li> <a href="https://rohan-global.herokuapp.com" target = "_blank">Rohan-Global</a> (<a href="" id="globshow">description</a>)
+        
+        <p id="globabstract"><b>Description:</b> Plot Gapminder data for hundreds of countries with this interactive app.  (Takes a few seconds to load.)
+            (<a href="" id="globhide">hide</a>)
+        </p>
+        <script>
+            $("#globshow").click(function(event) {
+                                    event.preventDefault();
+                                    $("#globabstract").show("slow");
+                                    });
+        </script>
+        <script>
+            $("#globhide").click(function(event) {
+                                    event.preventDefault();
+                                    $("#globabstract").hide("slow");
+                                    });
+        </script>
+    </ul>
+            
+<hr>
+            
+    <h2 class="homelink">
+        <a href="http://rohankadakia.com/">Home</a>
+    </h2>
+            
+</div>
+            
+    <p style="text-align:center;">&copy; 2018, Rohan Kadakia<p>
+            
+</body>
+</html>
+
