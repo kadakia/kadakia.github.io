@@ -85,6 +85,26 @@
                                     });
         </script>
     </ul>
+
+    <ul>
+        <li> Caption Maker (<a href="" id="capshow">description</a>, <a href="http://caption-maker.com" target = "_blank">caption-maker.com</a>)
+            
+        <p id="capdescrip"><b>Description:</b> Uses deep learning to automatically generate descriptions of uploaded images.
+            (<a href="" id="caphide">hide</a>)
+        </p>
+        <script>
+            $("#capshow").click(function(event) {
+                                    event.preventDefault();
+                                    $("#capdescrip").show("slow");
+                                    });
+        </script>
+        <script>
+            $("#caphide").click(function(event) {
+                                    event.preventDefault();
+                                    $("#capdescrip").hide("slow");
+                                    });
+        </script>
+    </ul>
             
 <hr>
 
