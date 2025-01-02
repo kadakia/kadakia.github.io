@@ -115,6 +115,26 @@
                                     });
         </script>
     </ul>
+
+    <ul>
+        <li> Rohan's First LLM App (<a href="" id="llmappshow">description</a>, <a href="https://first-llm-app.streamlit.app/" target = "_blank">first-llm-app.streamlit.app</a>)
+            
+        <p id="llmappdescrip"><b>Note:</b> Use of this app requires an OpenAI API key.
+            (<a href="" id="llmapphide">hide</a>)
+        </p>
+        <script>
+            $("#llmappshow").click(function(event) {
+                                   event.preventDefault();
+                                   $("#llmappdescrip").show("slow");
+                                   });
+        </script>
+        <script>
+            $("#llmapphide").click(function(event) {
+                                   event.preventDefault();
+                                   $("#llmappdescrip").hide("slow");
+                                   });
+        </script>
+    </ul>
             
 <hr>
 
@@ -133,9 +153,10 @@
             
 </div>
             
-    <p style="text-align:center;">
-        &copy; 2018&ndash;<script>document.write( new Date().getUTCFullYear() );</script>, Rohan Kadakia
-    </p>
+  <p style="text-align:center;">
+    &copy; 2018&ndash;<script>document.write( new Date().getUTCFullYear() );</script>, Rohan Kadakia <br>
+    Last modified on <script>document.write( document.lastModified.substring(0,11) );</script>
+  </p>
             
 </body>
 </html>
