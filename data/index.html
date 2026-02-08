@@ -1,163 +1,414 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <!--    <link href= "Style.css" type="text/css" rel="stylesheet" /> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps by Rohan Kadakia</title>
     
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132222959-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-132222959-1');
     </script>
     
-    <link href= "https://fonts.googleapis.com/css?family=Bungee+Shade" type="text/css" rel="stylesheet" />
-    
-    <title> Apps by Rohan Kadakia </title>
-    
+    <!-- Favicon -->
     <link rel="icon" href="../RK_icon.png">
-        
+    
+    <!-- Scripts -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
-            
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-            
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-            
-    <link rel="stylesheet" type="text/css" media="screen and (max-width: 500px)" href="../Style_mobile.css">
-            
-    <link rel="stylesheet" type="text/css" media="screen and (min-width: 801px)" href="../Style.css">
-            
-    <link rel="stylesheet" type="text/css" media="screen and (min-width: 501px) and (max-width: 800px)" href="../Style_tablet.css">
+    
+    <!-- NEW: Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Slick Carousel for the horizontal card slider -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <style>
+        /* --- Color Palette & Root Variables --- */
+        :root {
+            --primary-bg: #f0f4f8;
+            --secondary-bg: #ffffff;
+            --header-color: #1f3a5f;
+            --text-color: #333;
+            --link-color: #0077cc;
+            --accent-1: #4a90e2;
+            --accent-2: #50e3c2;
+            --accent-3: #f5a623;
+            --accent-4: #bd10e0;
+            --accent-5: #e35050;
+        }
+
+        /* --- General Body and Typography --- */
+        body {
+            /* UPDATED: Font changed to Poppins */
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #e6e9f0 100%);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px 40px;
+        }
+
+        /* --- Headings --- */
+        h1, h2 {
+            color: var(--header-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 3em;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.2em;
+            font-weight: 600;
+        }
+
+        /* --- Hamburger Menu --- */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--header-color);
+            border-radius: 50%;
+            z-index: 1001;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: white;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Animate hamburger to 'X' */
+        .menu-open .menu-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+        .menu-open .menu-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(31, 58, 95, 0.98);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .menu-open .nav-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-menu a {
+            color: white;
+            font-size: 2em;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* --- App Carousel --- */
+        .app-carousel .app-card {
+            background-color: var(--secondary-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 15px; /* Creates space between cards */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 5px solid;
+            min-height: 280px; /* Ensures cards have same height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Assigning the accent colors to the top border */
+        .app-carousel .app-card:nth-child(5n+1) { border-color: var(--accent-1); }
+        .app-carousel .app-card:nth-child(5n+2) { border-color: var(--accent-2); }
+        .app-carousel .app-card:nth-child(5n+3) { border-color: var(--accent-3); }
+        .app-carousel .app-card:nth-child(5n+4) { border-color: var(--accent-4); }
+        .app-carousel .app-card:nth-child(5n+5) { border-color: var(--accent-5); }
+        
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .app-title {
+            font-size: 1.6em;
+            font-weight: 600;
+            margin: 0;
+            color: var(--header-color);
+        }
+
+        .app-links a {
+            color: var(--link-color);
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: 500;
+        }
+        
+        .app-description {
+            margin-top: auto; /* Pushes description to the bottom, aligning headers */
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            color: #555;
+        }
+        
+        /* Styling for Slick Carousel Arrows */
+        .slick-prev:before, .slick-next:before {
+            font-size: 30px;
+            color: var(--header-color);
+        }
+
+        /* --- Other Sections (Insight) --- */
+        .other-links {
+            margin-top: 50px;
+            padding: 30px;
+            background: var(--secondary-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        /* UPDATED: Insight section made compact */
+        .other-links ul {
+            list-style: none;
+            padding-left: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px; /* Adds space between the links */
+            flex-wrap: wrap;
+        }
+        
+        .other-links li {
+             margin-bottom: 0;
+        }
+        
+        .other-links a {
+            font-size: 1.2em;
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
 </head>
             
 <body>
-            
-<div class="teaching">
-    <h1> Data-Driven Apps </h1>
 
-    <ul>
-        <li> RohanApp (<a href="" id="roappshow">description</a>, <a href="https://app.rohankadakia.com" target = "_blank">app.rohankadakia.com</a>)
+<!-- Hamburger Menu -->
+<div class="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<nav class="nav-menu">
+    <a href="https://rohankadakia.com/">Home</a>
+</nav>
             
-        <p id="roappdescrip"><b>Description:</b> RohanApp, a messaging and networking app.
-            (<a href="" id="roapphide">hide</a>)
+<div class="container">
+    <h1>Data-Driven Apps</h1>
+
+    <!-- App Carousel -->
+    <div class="app-carousel">
+        <!-- App: RohanApp -->
+        <div class="app-card">
+            <div class="app-header">
+                <h3 class="app-title">RohanApp</h3>
+                <div class="app-links">
+                    <a href="https://app.rohankadakia.com" target="_blank">app.rohankadakia.com</a>
+                </div>
+            </div>
+            <p class="app-description">
+                <b>Description:</b> RohanApp, a messaging and networking app.  <i>Skills & Tools</i>: Flask, Bootstrap, PostgreSQL, Microsoft Azure text translation.
+            </p>
+        </div>
+
+        <!-- App: LLM CC Ranker -->
+        <div class="app-card">
+            <div class="app-header">
+                <h3 class="app-title">LLM CC Ranker</h3>
+                <div class="app-links">
+                    <a href="https://llm-cc-ranker.rohankadakia.com" target="_blank">llm-cc-ranker.rohankadakia.com</a>
+                </div>
+            </div>
+            <p class="app-description">
+                <b>Description:</b> Rank credit card offers based on card metadata, credit and behavioral characteristics, approval odds, and an optional semantic search.  <i>Skills & Tools</i>: OpenAI, Streamlit, Langfuse.
+            </p>
+        </div>
+
+        <!-- App: Redshift SQL Generator -->
+        <div class="app-card">
+            <div class="app-header">
+                <h3 class="app-title">Sesame SQL Generator</h3>
+                <div class="app-links">
+                    <a href="https://redshift-sql-generator.rohankadakia.com" target="_blank">sesame-sql-generator.rohankadakia.com</a>
+                </div>
+                <div class="app-links">
+                    <a href="https://rohankadakia.com/data/sql-generator-guide" target="_blank">Usage Guide</a>
+                </div>
+            </div>
+            <p class="app-description">
+                <b>Description:</b> By invitation only.  Translate natural language prompt into SQL that can be executed against Credit Sesame Redshift data warehouse.  <i>Skills & Tools</i>: LLM fine tuning, MLX, Ngrok, Streamlit, Langfuse.
+            </p>
+        </div>
+
+        <!-- App: RL Stock Trading Playground/Sandbox -->
+        <div class="app-card">
+            <div class="app-header">
+                <h3 class="app-title">RL Stock Trading Lab</h3>
+                <div class="app-links">
+                    <a href="https://rl-stock-trading.rohankadakia.com" target="_blank">rl-stock-trading.rohankadakia.com</a>
+                </div>
+            </div>
+            <p class="app-description">
+                <b>Description:</b> Train and test Reinforcement Learning algorithms to build agents to make BUY/SELL decisions.  See if you can beat a BUY-AND-HOLD baseline.  <i>Skills & Tools</i>: Stable Baselines3, Gymnasium, Plotly, Streamlit.
+            </p>
+        </div>
+
+        <!-- App: Rohan-Global -->
+        <div class="app-card">
+            <div class="app-header">
+                <h3 class="app-title">Rohan-Global</h3>
+                <div class="app-links">
+                    <a href="https://global.rohankadakia.com" target="_blank">global.rohankadakia.com</a>
+                </div>
+            </div>
+            <p class="app-description">
+                <b>Description:</b> Plot Gapminder data for hundreds of countries with this interactive app. (Takes a few seconds to load.)
+            </p>
+        </div>
+
+        <!-- App: ±Epsilon -->
+        <div class="app-card">
+            <div class="app-header">
+                <h3 class="app-title">\(\pm\)Epsilon</h3>
+                <div class="app-links">
+                    <a href="https://epsilon.rohankadakia.com" target="_blank">epsilon.rohankadakia.com</a>
+                </div>
+            </div>
+            <p class="app-description">
+                <b>Description:</b> Use this recommendation system to search the arXiv for similar math papers!
+            </p>
+        </div>
+
+        <!-- App: Caption Maker -->
+        <div class="app-card">
+            <div class="app-header">
+                <h3 class="app-title">Caption Maker</h3>
+            </div>
+            <p class="app-description">
+                <b>Description:</b> Uses deep learning to automatically generate descriptions of uploaded images.
+            </p>
+        </div>
+
+        <!-- App: Rohan's First LLM App -->
+        <div class="app-card">
+            <div class="app-header">
+                <h3 class="app-title">Rohan's First LLM App</h3>
+                <div class="app-links">
+                    <a href="https://llm.rohankadakia.com" target="_blank">llm.rohankadakia.com</a>
+                </div>
+            </div>
+            <p class="app-description">
+                <b>Note:</b> Use of this app requires an OpenAI API key.  <i>Skills & Tools</i>: OpenAI, LangChain, Streamlit.
+            </p>
+        </div>
+    </div>
+            
+    <section class="other-links">
+        <h2>Insight</h2>
+        <ul>
+            <li><a href="https://drive.google.com/open?id=1MR0WBIIzlaSpppxlZWaWIDeJjAyOwy7vlDzxDXse1nw" target="_blank">Slide deck</a></li>
+            <li><a href="https://bit.ly/datadetector" target="_blank">Blog post</a></li>
+        </ul>
+    </section>
+            
+    <footer>
+        <p>
+            &copy; 2018&ndash;<script>document.write( new Date().getUTCFullYear() );</script>, Rohan Kadakia<br>
+            Last modified on <script>document.write( document.lastModified.substring(0,11) );</script>
         </p>
-        <script>
-            $("#roappshow").click(function(event) {
-                                   event.preventDefault(); // really need this ?
-                                   $("#roappdescrip").show("slow");
-                                   });
-        </script>
-        <script>
-            $("#roapphide").click(function(event) {
-                                   event.preventDefault();
-                                   $("#roappdescrip").hide("slow");
-                                   });
-        </script>
-    </ul>
-
-    <ul>
-        <li> \(\pm\)Epsilon (<a href="" id="pmepshow">description</a>, <a href="https://epsilon.rohankadakia.com" target = "_blank">epsilon.rohankadakia.com</a>)
-            
-        <p id="pmepdescrip"><b>Description:</b> Use this recommendation system to search the arXiv for similar math papers!
-            (<a href="" id="pmephide">hide</a>)
-        </p>
-        <script>
-            $("#pmepshow").click(function(event) {
-                                   event.preventDefault();
-                                   $("#pmepdescrip").show("slow");
-                                   });
-        </script>
-        <script>
-            $("#pmephide").click(function(event) {
-                                   event.preventDefault();
-                                   $("#pmepdescrip").hide("slow");
-                                   });
-        </script>
-    </ul>
-    
-    <ul>
-        <li> <a href="https://global.rohankadakia.com" target = "_blank">Rohan-Global</a> (<a href="" id="globshow">description</a>)
-        
-        <p id="globdescrip"><b>Description:</b> Plot Gapminder data for hundreds of countries with this interactive app.  (Takes a few seconds to load.)
-            (<a href="" id="globhide">hide</a>)
-        </p>
-        <script>
-            $("#globshow").click(function(event) {
-                                    event.preventDefault();
-                                    $("#globdescrip").show("slow");
-                                    });
-        </script>
-        <script>
-            $("#globhide").click(function(event) {
-                                    event.preventDefault();
-                                    $("#globdescrip").hide("slow");
-                                    });
-        </script>
-    </ul>
-
-    <ul>
-        <li> Caption Maker (<a href="" id="capshow">description</a>)
-            
-        <p id="capdescrip"><b>Description:</b> Uses deep learning to automatically generate descriptions of uploaded images.
-            (<a href="" id="caphide">hide</a>)
-        </p>
-        <script>
-            $("#capshow").click(function(event) {
-                                    event.preventDefault();
-                                    $("#capdescrip").show("slow");
-                                    });
-        </script>
-        <script>
-            $("#caphide").click(function(event) {
-                                    event.preventDefault();
-                                    $("#capdescrip").hide("slow");
-                                    });
-        </script>
-    </ul>
-
-    <ul>
-        <li> Rohan's First LLM App (<a href="" id="llmappshow">description</a>, <a href="https://llm.rohankadakia.com" target = "_blank">llm.rohankadakia.com</a>)
-            
-        <p id="llmappdescrip"><b>Note:</b> Use of this app requires an OpenAI API key.
-            (<a href="" id="llmapphide">hide</a>)
-        </p>
-        <script>
-            $("#llmappshow").click(function(event) {
-                                   event.preventDefault();
-                                   $("#llmappdescrip").show("slow");
-                                   });
-        </script>
-        <script>
-            $("#llmapphide").click(function(event) {
-                                   event.preventDefault();
-                                   $("#llmappdescrip").hide("slow");
-                                   });
-        </script>
-    </ul>
-            
-<hr>
-
-<h2> Insight </h2>
-
-    <ul>
-        <li> <a href="https://drive.google.com/open?id=1MR0WBIIzlaSpppxlZWaWIDeJjAyOwy7vlDzxDXse1nw" target = "_blank">Slide deck</a>
-        <li> <a href="https://bit.ly/datadetector" target = "_blank">Blog post</a>    
-    </ul>
-
-<hr>
-            
-    <h2 class="homelink">
-        <a href="https://rohankadakia.com/">Home</a>
-    </h2>
+    </footer>
             
 </div>
-            
-  <p style="text-align:center;">
-    &copy; 2018&ndash;<script>document.write( new Date().getUTCFullYear() );</script>, Rohan Kadakia <br>
-    Last modified on <script>document.write( document.lastModified.substring(0,11) );</script>
-  </p>
+
+<script>
+$(document).ready(function() {
+    // 1. Initialize the Slick Carousel
+    $('.app-carousel').slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    });
+
+    // 2. Handle the Hamburger Menu toggle
+    $('.menu-toggle').click(function() {
+        $('body').toggleClass('menu-open');
+    });
+});
+</script>
             
 </body>
 </html>
-
