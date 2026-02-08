@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesame SQL Generator How-To</title>
+    <link rel="icon" href="../../RK_icon.png">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center; /* Vertically aligns the items */
+            justify-content: space-between; /* Pushes the icon to the right */
+            width: 100%;
+            cursor: pointer;
+            list-style: none; /* Hides the default disclosure triangle */
+        }
+        
+        .step-header::-webkit-details-marker {
+            display: none; /* Hides the default disclosure triangle in WebKit browsers */
+        }
+        
+        /* Container for the step number and title */
+        .step-title-group {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #3498db;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #3498db;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .step-header p {
+            margin: 0;
+            padding-top: 5px; /* Aligns text with the top of the circle */
+            flex-grow: 1;
+        }
+
+        /* NEW: Styles for the expand/collapse icon */
+        .toggle-icon {
+            font-size: 2em;
+            color: #3498db;
+            transition: transform 0.2s ease-in-out; /* Smooth animation */
+            margin-left: 20px;
+            line-height: 1;
+        }
+
+        /* Set the default state icon to '+' */
+        .toggle-icon::before {
+            content: '+';
+        }
+
+        /* When the <details> element is open, change the icon to '−' and rotate it */
+        details[open] > summary .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        details[open] > summary .toggle-icon::before {
+            content: '−'; /* Using a proper minus sign */
+        }
+
+
+        .step-details {
+            /* Indents the content to align with the text */
+            padding-left: 64px; /* Width of step-number (40px) + its border (4px) + its margin (20px) */
+            padding-top: 10px;
+        }
+
+        .step-image {
+            margin-top: 15px;
+        }
+
+        .step-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Guide to Sesame SQL Generator</h1>
+
+        <div class="steps">
+            <details class="step">
+                <summary class="step-header">
+                    <div class="step-title-group">
+                        <div class="step-number">1</div>
+                        <p><strong>Step One:</strong> Select Redshift table(s) the fine tuned model should consider when drafting the query.</p>
+                    </div>
+                    <span class="toggle-icon"></span>
+                </summary>
+                <div class="step-details">
+                    <div class="step-image">
+                        <figure>
+                            <img src="step-1.jpg" alt="Selecting Redshift table from multiselect dropdown.">
+                            <figcaption>Selecting Redshift table from multiselect dropdown.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </details>
+
+            <details class="step">
+                <summary class="step-header">
+                    <div class="step-title-group">
+                        <div class="step-number">2</div>
+                        <p><strong>Step Two:</strong> Write and submit natural language prompt or question for the query that you want generated.</p>
+                    </div>
+                    <span class="toggle-icon"></span>
+                </summary>
+                <div class="step-details">
+                    <div class="step-image">
+                        <figure>
+                            <img src="step-2.jpg" alt="Example of clear, concise English prompt.">
+                            <figcaption>Example of clear, concise English prompt.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </details>
+
+            <details class="step">
+                <summary class="step-header">
+                    <div class="step-title-group">
+                        <div class="step-number">3</div>
+                        <p><strong>Step Three:</strong> View the results.</p>
+                    </div>
+                    <span class="toggle-icon"></span>
+                </summary>
+                <div class="step-details">
+                    <div class="step-image">
+                        <figure>
+                            <img src="step-3.jpg" alt="Results showing generated query and execution time in seconds.">
+                            <figcaption>Results showing generated query and execution time in seconds.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </details>
+
+            <details class="step">
+                <summary class="step-header">
+                    <div class="step-title-group">
+                        <div class="step-number">4</div>
+                        <p><strong>Step Four:</strong> Submit correction, if necessary.</p>
+                    </div>
+                    <span class="toggle-icon"></span>
+                </summary>
+                <div class="step-details">
+                    <div class="step-image">
+                        <figure>
+                            <img src="step-4.jpg" alt="Successful submission of corrected query.">
+                            <figcaption>Successful submission of corrected query.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </details>
+
+            <details class="step">
+                <summary class="step-header">
+                    <div class="step-title-group">
+                        <div class="step-number">5</div>
+                        <p><strong>Step Five:</strong> Trace in Langfuse Cloud. Correction can be exported from Langfuse for next round of fine tuning.</p>
+                    </div>
+                    <span class="toggle-icon"></span>
+                </summary>
+                <div class="step-details">
+                    <div class="step-image">
+                        <figure>
+                            <img src="step-5.jpg" alt="Trace in Langfuse Cloud.">
+                            <figcaption>Trace in Langfuse Cloud.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </div>
+
+  <p style="text-align:center;">
+    &copy; 2018&ndash;<script>document.write( new Date().getUTCFullYear() );</script>, Rohan Kadakia <br>
+    Last modified on <script>document.write( document.lastModified.substring(0,11) );</script>
+  </p>
+
+</body>
+</html>
